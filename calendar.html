@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>每日销售上报 - 日历视图</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container" id="calendar-page">
+        <!-- 顶部导航栏 -->
+        <div class="nav-bar">
+            <div class="back-icon" onclick="goToHome()">〈</div>
+            <div class="title">日历视图</div>
+        </div>
+        
+        <!-- 月份选择器 -->
+        <div class="month-selector">
+            <div class="arrow prev" onclick="prevMonth()">〈</div>
+            <div class="current-month" id="current-month">2023年6月</div>
+            <div class="arrow next" onclick="nextMonth()">〉</div>
+        </div>
+        
+        <!-- 日历表格 -->
+        <div class="calendar-grid">
+            <!-- 星期表头 -->
+            <div class="weekday">日</div>
+            <div class="weekday">一</div>
+            <div class="weekday">二</div>
+            <div class="weekday">三</div>
+            <div class="weekday">四</div>
+            <div class="weekday">五</div>
+            <div class="weekday">六</div>
+            
+            <!-- 日期单元格由JS动态生成 -->
+            <div id="calendar-days"></div>
+        </div>
+        
+        <!-- 图例说明 -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color reported"></div>
+                <div class="legend-text">已填报</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color adjusted"></div>
+                <div class="legend-text">已调整</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color locked"></div>
+                <div class="legend-text">已锁定</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 日期详情弹窗 -->
+    <div id="date-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="detail-date" class="modal-title">2023-06-15</span>
+                <span class="close" onclick="closeDateDetail()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="detail-item">
+                    <div class="detail-label">原始填报金额</div>
+                    <div class="detail-value">¥<span id="original-amount">0.00</span></div>
+                </div>
+                <div class="detail-item" id="adjusted-item" style="display: none;">
+                    <div class="detail-label">调整后金额</div>
+                    <div class="detail-value">¥<span id="adjusted-amount">0.00</span></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">备注</div>
+                    <div class="detail-value" id="detail-remarks">无</div>
+                </div>
+                <div class="detail-item" id="adjustment-remarks-item" style="display: none;">
+                    <div class="detail-label">调整原因</div>
+                    <div class="detail-value" id="adjustment-remarks">无</div>
+                </div>
+                
+                <div id="detail-actions" class="detail-actions">
+                    <div class="detail-button" onclick="editDate()">修改数据</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 长按显示历史记录弹窗 -->
+    <div id="history-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="history-date" class="modal-title">2023-06-15 历史记录</span>
+                <span class="close" onclick="closeHistory()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="history-records">
+                    <!-- 历史记录由JS动态生成 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html> 

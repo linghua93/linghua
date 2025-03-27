@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>每日销售上报 - 首页</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container" id="home-page">
+        <!-- 顶部导航栏 -->
+        <div class="nav-bar">
+            <div class="title">每日销售上报</div>
+            <div class="help-icon" onclick="showHelp()">?</div>
+            <div id="unread-badge" class="red-badge" style="display: none;"></div>
+        </div>
+        
+        <!-- 当月汇总卡片 -->
+        <div class="summary-card">
+            <div class="summary-item">
+                <div class="label">本月已填报</div>
+                <div class="value"><span id="reported-days">0</span>/<span id="total-days">30</span>天</div>
+            </div>
+            <div class="summary-item">
+                <div class="label">累计销售额</div>
+                <div class="value">¥<span id="total-sales">0.00</span></div>
+            </div>
+        </div>
+        
+        <!-- 日历补填入口 -->
+        <div class="calendar-entry" onclick="goToCalendar()">
+            <div class="entry-icon">📅</div>
+            <div class="entry-text">
+                <div class="entry-title">日历补填</div>
+                <div class="entry-desc">查看历史记录并补填漏报数据</div>
+            </div>
+            <div class="entry-arrow">›</div>
+        </div>
+        
+        <!-- 悬浮按钮 -->
+        <div class="float-button" onclick="goToReport()">
+            立即填报
+        </div>
+    </div>
+
+    <!-- 帮助弹窗 -->
+    <div id="help-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">填报说明</span>
+                <span class="close" onclick="closeHelp()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>1. 每日销售数据需在当天23:59前填报</p>
+                <p>2. 过期未填报的数据可通过日历页补填</p>
+                <p>3. 数据提交后，如需修改请在7天内操作</p>
+                <p>4. 带有红色边框的日期为运营调整过的数据</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
